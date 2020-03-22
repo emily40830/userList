@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Movie List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+    integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="wrap">
+    <!-- navigation -->
+    <nav class="head fixed-top" id="myHeader">
+      <ul class="menu">
+        <li class="logo"><a href="#">WithEmily.dev</a></li>
+        <li class="h-item"><a href="index.html">Home</a></li>
+        <li class="h-item"><a href="#">Favorite</a></li>
+        <li class="h-item button"><a href="#">Log In</a></li>
+        <li class="h-item button secondary"><a href="#">Sign Up</a></li>
+        <li class="toggle"><span class="bars"></span></li>
+      </ul>
+    </nav>
+    <!--    banner -->
+    <!-- <div class="banner">
+      <div class="bannerPic">
+        <img src="img/travelfriend.jpg" class="d-block w-100 pic1" alt="">
+      </div>
+
+    </div> -->
+    <div class="single-post-header">
+      <div class="container">
+        <div class="row row-banner">
+          <div class="columns eight">
+
+            <div class="single-post-image"
+              style="background:url('https://i0.wp.com/www.deftnomad.com/wp-content/uploads/2019/04/travelfriend.jpg?fit=960%2C461&amp;ssl=1') center no-repeat;background-size:cover;">
+              <img
+                src="https://i0.wp.com/www.deftnomad.com/wp-content/uploads/2019/04/travelfriend.jpg?fit=960%2C461&amp;ssl=1"
+                class="attachment-960x540 size-960x540 wp-post-image jetpack-lazy-image" alt=""></div>
+          </div>
+          <div class="columns four">
+            <div class="single-post-intro">
+              <h1>Going On a Trip Alone? Better Find a Travel Friend</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- filter -->
+    <div class="container mt-5">
+      <div class="row filters">
+        <div class="filter gender">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Gender
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" id="onlyMale" href="#">Male</a>
+            <a class="dropdown-item" id="onlyFemale" href="#">Female</a>
+            <a class="dropdown-item" id="All" href="#">All</a>
+          </div>
+        </div>
+
+        <!-- <div class="filter age">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSlideButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Age
+              </button>
+              <div class="dropdown-slide" aria-labelledby="dropdownSlideButton">
+                <div class="output o0"> </div>
+                <div class="thumb t0"></div>
+    
+                <div class="output o1"> </div>
+                <div class="thumb t1"></div>
+              </div>
+    
+            </div> -->
+
+        <div class="filter searchbar">
+          <div id="search-bar">
+            <form id="search" class="form-inline">
+              <label class="sr-only" for="inlineFormInputName2">Name</label>
+              <input type="text" class="form-control" id="search-input" placeholder="search user name ...">
+              <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-sm"></div>
+        <div class="col-sm-1" id="renderSelection">
+          <!-- <i id="sortBycreated" class="fa fa-sort" aria-hidden="true" data-toggle="tooltip"></i> -->
+          <i id="cardType" class="fa fa-th" aria-hidden="true" data-toggle="tooltip"></i>
+          <i id="listType" class="fa fa-bars" aria-hidden="true" data-toggle="tooltip"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+
+      <!--    user -->
+      <div class="row" id="userList">
+      </div>
+    </div>
+
+    <!--  page navigation-->
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center" id="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!--  modal-->
+  <!--pop up Modal -->
+  <div class="modal fade" id="userData" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="show-user-body">
+          <div class="row">
+            <div class="col-sm-6" id="show-user-photo"></div>
+            <div class="col-sm-6" id="show-user-info">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-none" id="show-user-id">User id</li>
+                <li class="list-group-item" id="show-user-name">User name</li>
+                <li class="list-group-item" id="show-user-age">User age</li>
+                <li class="list-group-item" id="show-user-date">User birthday</li>
+                <li class="list-group-item" id="show-user-region">User region</li>
+              </ul>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" id="btn-remove-favorite">X</button>
+          <button type="button" class="btn btn-primary" id="btn-contact" data-toggle="modal" data-target="#emailModal"
+            data-whatever="">
+            <i class="far fa-envelope"></i>
+            Contanct Me</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!--  email modal-->
+  <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="emailModalLabel">New message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group row">
+              <label for="staticName" class="col-sm-2 col-form-label">To </label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="staticName" value="name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-form-label">Email:</label>
+              <input type="text" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+  <script src="favorite.js"></script>
+</body>
+
+</html>
